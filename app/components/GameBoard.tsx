@@ -10,7 +10,7 @@ interface GameBoardProps {
   toggleCell: (row: number, col: number) => void;
 }
 
-// Using memo to 
+// Using memo to prevent unnecessary re-renders here
 const GameBoard: React.FC<GameBoardProps> = React.memo(({ boardState, toggleCell }) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
@@ -23,7 +23,7 @@ const GameBoard: React.FC<GameBoardProps> = React.memo(({ boardState, toggleCell
     boardState.forEach((row, r) => {
       row.forEach((cell, c) => {
         const [cellState, shadowState] = Array.isArray(cell) ? cell : [cell, 0];
-        
+
         // Draw shadow
         ctx.fillStyle = `rgba(100, 100, 100, ${shadowState})`;
         ctx.fillRect(c * CELL_SIZE, r * CELL_SIZE, CELL_SIZE, CELL_SIZE);
@@ -60,7 +60,7 @@ const GameBoard: React.FC<GameBoardProps> = React.memo(({ boardState, toggleCell
     drawBoard();
   }, [drawBoard]);
 
-  // 
+  // Canva click handler
   const handleClick = useCallback((e: React.MouseEvent<HTMLCanvasElement>) => {
     const canvas = canvasRef.current;
     if (!canvas) return;
@@ -72,6 +72,7 @@ const GameBoard: React.FC<GameBoardProps> = React.memo(({ boardState, toggleCell
     const x = Math.floor((e.clientX - rect.left) * scaleX / CELL_SIZE);
     const y = Math.floor((e.clientY - rect.top) * scaleY / CELL_SIZE);
 
+    // Check if click is inside the board
     if (x >= 0 && x < NUM_COLS && y >= 0 && y < NUM_ROWS) {
       toggleCell(y, x);
     }
