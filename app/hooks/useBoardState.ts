@@ -1,10 +1,11 @@
 import { useState, useCallback } from 'react';
 import { Board, Pattern } from '@/app/types/types';
-import { config } from '@/app/config/config'; // Importa el objeto config
+import { config } from '@/app/config/config'; // Import config as object
 
-const { NUM_ROWS, NUM_COLS } = config; // Extrae NUM_ROWS y NUM_COLS del objeto config
+const { NUM_ROWS, NUM_COLS } = config; // Extract NUM_ROWS and NUM_COLS from the config object
 import { createBoard } from '@/app/utils/boardUtils';
 
+// Create a new board state with the createBoard function
 export const useBoardState = () => {
   const [boardState, setBoardState] = useState<Board>(createBoard);
   const [selectedPattern, setSelectedPattern] = useState<Pattern | null>(null);
@@ -17,7 +18,7 @@ export const useBoardState = () => {
     setBoardState((prevState) => {
       const newState = prevState.map((r) => [...r]);
 
-      // Verificar que row y col estén dentro de los límites válidos
+      // Verification for the row and col to be inside the valids limits
       if (row >= 0 && row < NUM_ROWS && col >= 0 && col < NUM_COLS) {
         if (selectedPattern) {
           selectedPattern.cells.forEach(([r, c]) => {
