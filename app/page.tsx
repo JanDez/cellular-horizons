@@ -48,7 +48,7 @@ const Home: React.FC = () => {
             canMoveForward={canMoveForward}
             currentIndex={currentIndex}
             historyLength={historyLength}
-            onMoveToIndex={moveToIndex}  
+Sa            onMoveToIndex={moveToIndex}
             hasLiveCells={hasLiveCells()}
           />
         </div>

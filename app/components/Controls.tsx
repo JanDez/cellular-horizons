@@ -21,7 +21,7 @@ interface ControlsProps {
   currentIndex: number;
   historyLength: number;
   onMoveToIndex: (index: number) => void;
-  moveToIndex: (index: number) => void;
+  //moveToIndex: (index: number) => void;
   hasLiveCells: boolean;
 }
 
@@ -44,7 +44,7 @@ const Controls: React.FC<ControlsProps> = ({
   historyLength,
   onMoveToIndex,
   hasLiveCells,
-  moveToIndex,
+  //moveToIndex,
   nextGeneration: nextGen,
 }) => {
 
