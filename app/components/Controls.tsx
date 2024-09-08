@@ -44,7 +44,7 @@ const Controls: React.FC<ControlsProps> = ({
   historyLength,
   onMoveToIndex,
   hasLiveCells,
-  moveToIndex, 
+  moveToIndex,
   nextGeneration: nextGen,
 }) => {
 

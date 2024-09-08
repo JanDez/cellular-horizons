@@ -20,6 +20,7 @@ export const useGameLogic = () => {
 	const [isPlaying, setIsPlaying] = useState(false)
 	const [selectedPattern, setSelectedPattern] = useState<Pattern | null>(null)
 	const {
+		history,
 		addToHistory,
 		moveBackward,
 		moveForward,
@@ -123,7 +124,7 @@ export const useGameLogic = () => {
 				return newBoard
 			}
 
-			if (isInfiniteLoop({ current: history }, newBoard)) {
+			if (isInfiniteLoop(history, newBoard)) {
 				setIsPlaying(false)
 				alert("The game has stopped due to an infinite loop.")
 				return prevBoard
@@ -132,8 +133,7 @@ export const useGameLogic = () => {
 			addToHistory(newBoard)
 			return newBoard
 		})
-	}, [addToHistory, resetHistory])
-
+	}, [addToHistory, resetHistory, history])
 	// The handleMoveBackward function is used to move backward in the movement history
 	const handleMoveBackward = useCallback(() => {
 		const previousBoard = moveBackward()
@@ -199,7 +199,6 @@ export const useGameLogic = () => {
 		resetAll,
 		resetBoard,
 		toggleCell,
-		nextGeneration,
 		applyPattern,
 		moveBackward: handleMoveBackward,
 		moveForward: handleMoveForward,
