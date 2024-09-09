@@ -16,3 +16,4 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
 
+https://github.com/user-attachments/assets/9ee3760c-673e-487d-b4b6-d07a0245cfc6
